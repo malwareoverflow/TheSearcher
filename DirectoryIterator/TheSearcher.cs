@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace DirectoryIterator
 {
-    public partial class Form1 : Form
+    public partial class TheSearcher : Form
 
     {
         // This delegate enables asynchronous calls for setting  
@@ -28,11 +28,11 @@ namespace DirectoryIterator
 
         List<string> File = new List<string>();
         List<string> Directories = new List<string>();
-        public Thread Timerthread;
+
         public Thread Startthread;
 
         int TotalDirectories = 0;
-        public Form1()
+        public TheSearcher()
         {
             InitializeComponent();
         }
@@ -191,7 +191,11 @@ namespace DirectoryIterator
                     //                    KillTheThread();
 
                     MessageBox.Show("Done");
-
+                    Panelcontrols(true);
+                    timer1.Stop();
+                    timer1.Enabled = false;
+                    Startthread.Abort();
+                        
                 }
             }
             catch (Exception e)
@@ -285,13 +289,25 @@ namespace DirectoryIterator
 
         private void Timertick(object sender, EventArgs e)
         {
-            //SetLabel(DateTime.Now.ToString("HH:mm:ss tt"));
+
+            this.Timer.BeginInvoke((MethodInvoker)delegate () { this.Timer.Text = DateTime.Now.ToString("HH:mm:ss tt"); });
+          
+        }
+
+        public void Panelcontrols(bool Enable)
+        {
+            foreach (Control ctrl in panel1.Controls)
+            {
+                ctrl.Enabled = Enable;
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {
            
             MessageBox.Show("Start");
+            Panelcontrols(false);
             timer1.Enabled = true;
+            timer1.Start();
             Startthread = new Thread(new ThreadStart(Start));
             Startthread.Start();
 

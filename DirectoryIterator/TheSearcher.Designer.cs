@@ -1,6 +1,6 @@
 ﻿namespace DirectoryIterator
 {
-    partial class Form1
+    partial class TheSearcher
     {
         /// <summary>
         /// Required designer variable.
@@ -42,12 +42,14 @@
             this.ExtensionList = new System.Windows.Forms.DataGridView();
             this.Timer = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ExtensionList)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(197, 84);
+            this.button1.Location = new System.Drawing.Point(199, 133);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -57,21 +59,21 @@
             // 
             // Path
             // 
-            this.Path.Location = new System.Drawing.Point(89, 86);
+            this.Path.Location = new System.Drawing.Point(77, 133);
             this.Path.Name = "Path";
             this.Path.Size = new System.Drawing.Size(100, 20);
             this.Path.TabIndex = 0;
             // 
             // Searchvalue
             // 
-            this.Searchvalue.Location = new System.Drawing.Point(89, 112);
+            this.Searchvalue.Location = new System.Drawing.Point(77, 159);
             this.Searchvalue.Name = "Searchvalue";
             this.Searchvalue.Size = new System.Drawing.Size(100, 20);
             this.Searchvalue.TabIndex = 2;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(89, 164);
+            this.button2.Location = new System.Drawing.Point(77, 225);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -82,7 +84,7 @@
             // Deletechoice
             // 
             this.Deletechoice.AutoSize = true;
-            this.Deletechoice.Location = new System.Drawing.Point(89, 209);
+            this.Deletechoice.Location = new System.Drawing.Point(77, 264);
             this.Deletechoice.Name = "Deletechoice";
             this.Deletechoice.Size = new System.Drawing.Size(57, 17);
             this.Deletechoice.TabIndex = 5;
@@ -91,7 +93,7 @@
             // 
             // Extensionvalue
             // 
-            this.Extensionvalue.Location = new System.Drawing.Point(89, 138);
+            this.Extensionvalue.Location = new System.Drawing.Point(77, 185);
             this.Extensionvalue.Name = "Extensionvalue";
             this.Extensionvalue.Size = new System.Drawing.Size(100, 20);
             this.Extensionvalue.TabIndex = 3;
@@ -99,7 +101,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 141);
+            this.label1.Location = new System.Drawing.Point(14, 192);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 8;
@@ -108,7 +110,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 119);
+            this.label2.Location = new System.Drawing.Point(14, 166);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 9;
@@ -117,7 +119,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 94);
+            this.label3.Location = new System.Drawing.Point(14, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 10;
@@ -129,7 +131,7 @@
             this.ExtensionList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ExtensionList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ExtensionList.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.ExtensionList.Location = new System.Drawing.Point(303, 67);
+            this.ExtensionList.Location = new System.Drawing.Point(313, 111);
             this.ExtensionList.Name = "ExtensionList";
             this.ExtensionList.RowHeadersWidth = 10;
             this.ExtensionList.Size = new System.Drawing.Size(385, 170);
@@ -138,36 +140,45 @@
             // Timer
             // 
             this.Timer.AutoSize = true;
-            this.Timer.Location = new System.Drawing.Point(456, 22);
+            this.Timer.Location = new System.Drawing.Point(370, 22);
             this.Timer.Name = "Timer";
-            this.Timer.Size = new System.Drawing.Size(35, 13);
+            this.Timer.Size = new System.Drawing.Size(0, 13);
             this.Timer.TabIndex = 11;
-            this.Timer.Text = "label4";
             // 
             // timer1
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.Timertick);
             // 
-            // Form1
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ExtensionList);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.Deletechoice);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.Path);
+            this.panel1.Controls.Add(this.Searchvalue);
+            this.panel1.Controls.Add(this.Extensionvalue);
+            this.panel1.Location = new System.Drawing.Point(12, 51);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(728, 292);
+            this.panel1.TabIndex = 12;
+            // 
+            // TheSearcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 261);
+            this.ClientSize = new System.Drawing.Size(841, 373);
             this.Controls.Add(this.Timer);
-            this.Controls.Add(this.ExtensionList);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Extensionvalue);
-            this.Controls.Add(this.Deletechoice);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.Searchvalue);
-            this.Controls.Add(this.Path);
-            this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.panel1);
+            this.Name = "TheSearcher";
+            this.Text = "The Searcher";
             ((System.ComponentModel.ISupportInitialize)(this.ExtensionList)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,6 +199,7 @@
         private System.Windows.Forms.DataGridView ExtensionList;
         private System.Windows.Forms.Label Timer;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
