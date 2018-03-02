@@ -30,7 +30,8 @@ namespace DirectoryIterator
         List<string> Directories = new List<string>();
 
         public Thread Startthread;
-
+        string requirefilename;
+        string requirefileextension;
         int TotalDirectories = 0;
         public TheSearcher()
         {
@@ -75,6 +76,12 @@ namespace DirectoryIterator
             {
                 foreach (string item in Files)
                 {
+                    string filename = System.IO.Path.GetFileNameWithoutExtension(item);
+                    string extension = System.IO.Path.GetExtension(item);
+                    if ($"{filename}{extension}" ==$"{requirefilename}.{requirefileextension}")
+                    {
+                        MessageBox.Show($"File found inside {item.ToString()}");
+                    }
                     File.Add(item);
                 }
             }
@@ -157,6 +164,7 @@ namespace DirectoryIterator
                         string ext = "."+GetExtensionvalue();
                         string filename = System.IO.Path.GetFileName(item);
                         string pathext = System.IO.Path.GetExtension(filename);
+                      
                         if(pathext == ext)
                         {
                             ChoiceExtension.Add(item);
@@ -191,10 +199,10 @@ namespace DirectoryIterator
                     //                    KillTheThread();
 
                     MessageBox.Show("Done");
-                    Panelcontrols(true);
+        
                     timer1.Stop();
                     timer1.Enabled = false;
-                    Startthread.Abort();
+               
                         
                 }
             }
@@ -305,7 +313,8 @@ namespace DirectoryIterator
         {
            
             MessageBox.Show("Start");
-            Panelcontrols(false);
+            requirefilename = Searchvalue.Text;
+            requirefileextension = Extensionvalue.Text;
             timer1.Enabled = true;
             timer1.Start();
             Startthread = new Thread(new ThreadStart(Start));

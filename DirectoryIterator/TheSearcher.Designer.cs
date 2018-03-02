@@ -43,6 +43,7 @@
             this.Timer = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ExtensionList)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -152,6 +153,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.ExtensionList);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.button1);
@@ -166,6 +168,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(728, 292);
             this.panel1.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(440, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "All Matching Extension";
             // 
             // TheSearcher
             // 
@@ -200,6 +211,7 @@
         private System.Windows.Forms.Label Timer;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
     }
 }
 
