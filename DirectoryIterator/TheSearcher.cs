@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace DirectoryIterator
 {
-    public partial class TheSearcher : Form
+    public partial class TheSearcher : Form,IDisposable
 
     {
         // This delegate enables asynchronous calls for setting  
@@ -78,9 +78,11 @@ namespace DirectoryIterator
                 {
                     string filename = System.IO.Path.GetFileNameWithoutExtension(item);
                     string extension = System.IO.Path.GetExtension(item);
-                    if ($"{filename}{extension}" ==$"{requirefilename}.{requirefileextension}")
+                    if ($"{filename}{extension}"==$"{requirefilename}.{requirefileextension}")
                     {
                         MessageBox.Show($"File found inside {item.ToString()}");
+                        this.Dispose();
+                        return;
                     }
                     File.Add(item);
                 }
@@ -144,6 +146,7 @@ namespace DirectoryIterator
                     if (System.IO.Path.GetFileName(item) == Searchvalue.Text)
                     {
                         MessageBox.Show($"File exist inside {item}");
+                        
                         if (Deletechoice.Checked)
                         {
                             DialogResult result = MessageBox.Show($"Do you want to detele {item}", "Confirmation", MessageBoxButtons.YesNoCancel);
@@ -158,6 +161,7 @@ namespace DirectoryIterator
                            
 
                         }
+                        return;
                     }
                     if (Extensionvalue.Text!= "")
                     {
@@ -194,10 +198,7 @@ namespace DirectoryIterator
                    
                     ShowAllFiles();
                     InserttoGrid(ChoiceExtension);
-                    MessageBox.Show(Startthread.IsAlive.ToString());
-
-                    //                    KillTheThread();
-
+                
                     MessageBox.Show("Done");
         
                     timer1.Stop();
@@ -318,6 +319,7 @@ namespace DirectoryIterator
             timer1.Enabled = true;
             timer1.Start();
             Startthread = new Thread(new ThreadStart(Start));
+            Startthread.IsBackground = true;
             Startthread.Start();
 
 

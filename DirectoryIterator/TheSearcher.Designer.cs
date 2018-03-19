@@ -141,9 +141,10 @@
             // Timer
             // 
             this.Timer.AutoSize = true;
-            this.Timer.Location = new System.Drawing.Point(370, 22);
+            this.Timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Timer.Location = new System.Drawing.Point(375, 9);
             this.Timer.Name = "Timer";
-            this.Timer.Size = new System.Drawing.Size(0, 13);
+            this.Timer.Size = new System.Drawing.Size(0, 25);
             this.Timer.TabIndex = 11;
             // 
             // timer1
