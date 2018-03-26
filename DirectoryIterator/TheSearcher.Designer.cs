@@ -139,6 +139,7 @@
             this.ExtensionList.RowHeadersWidth = 10;
             this.ExtensionList.Size = new System.Drawing.Size(385, 170);
             this.ExtensionList.TabIndex = 6;
+            this.ExtensionList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExtensionList_CellDoubleClick);
             // 
             // Timer
             // 

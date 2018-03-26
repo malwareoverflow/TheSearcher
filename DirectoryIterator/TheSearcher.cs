@@ -345,5 +345,11 @@ namespace DirectoryIterator
             Startthread.IsBackground = true;
             Startthread.Start();
         }
+
+        private void ExtensionList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+        
+          
+        }
     }
 }
