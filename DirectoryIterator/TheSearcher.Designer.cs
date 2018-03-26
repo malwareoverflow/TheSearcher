@@ -80,7 +80,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Search";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Start);
             // 
             // Deletechoice
             // 
@@ -91,6 +91,7 @@
             this.Deletechoice.TabIndex = 5;
             this.Deletechoice.Text = "Delete";
             this.Deletechoice.UseVisualStyleBackColor = true;
+            this.Deletechoice.Visible = false;
             // 
             // Extensionvalue
             // 
@@ -137,6 +138,7 @@
             this.ExtensionList.RowHeadersWidth = 10;
             this.ExtensionList.Size = new System.Drawing.Size(385, 170);
             this.ExtensionList.TabIndex = 6;
+            this.ExtensionList.Visible = false;
             // 
             // Timer
             // 
@@ -165,9 +167,9 @@
             this.panel1.Controls.Add(this.Path);
             this.panel1.Controls.Add(this.Searchvalue);
             this.panel1.Controls.Add(this.Extensionvalue);
-            this.panel1.Location = new System.Drawing.Point(12, 51);
+            this.panel1.Location = new System.Drawing.Point(225, 56);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(728, 292);
+            this.panel1.Size = new System.Drawing.Size(304, 292);
             this.panel1.TabIndex = 12;
             // 
             // label4
@@ -178,12 +180,13 @@
             this.label4.Size = new System.Drawing.Size(114, 13);
             this.label4.TabIndex = 11;
             this.label4.Text = "All Matching Extension";
+            this.label4.Visible = false;
             // 
             // TheSearcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 373);
+            this.ClientSize = new System.Drawing.Size(798, 373);
             this.Controls.Add(this.Timer);
             this.Controls.Add(this.panel1);
             this.Name = "TheSearcher";

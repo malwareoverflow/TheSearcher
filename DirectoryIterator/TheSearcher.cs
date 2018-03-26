@@ -63,14 +63,15 @@ namespace DirectoryIterator
                     Directories.Add(item);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
 
-                
             }
            
         }
-        public void AddFiles(string[] Files)
+        public bool AddFiles(string[] Files)
         {
             try
             {
@@ -81,16 +82,19 @@ namespace DirectoryIterator
                     if ($"{filename}{extension}"==$"{requirefilename}.{requirefileextension}")
                     {
                         MessageBox.Show($"File found inside {item.ToString()}");
-                        this.Dispose();
-                        return;
+                      
+                        return true;
                     }
                     File.Add(item);
+                
                 }
+                return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                return false;
             }
            
         }
@@ -102,14 +106,16 @@ namespace DirectoryIterator
                 return !Directory.EnumerateFileSystemEntries(path).Any();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
                 return true;
             }
         }
         public void Recursive(List<string> Dirs)
         {
+            bool FileFound = false;
             try
             {
                 for (var x = 0; x < Dirs.Count; x++)
@@ -118,21 +124,31 @@ namespace DirectoryIterator
                     {
 
                         AddDir(Directory.GetDirectories(Directories[x]));
-                        AddFiles(Directory.GetFiles(Directories[x]));
+                        if (AddFiles(Directory.GetFiles(Directories[x])))
+                        {
+                            FileFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            AddFiles(Directory.GetFiles(Directories[x]));
+                        }
+                        
 
 
                     }
                     Directories.Remove(Directories[x]);
                 }
-                if (Directories.Count > 0)
+                if (Directories.Count > 0 && FileFound==false)
                 {
                     Recursive(Directories);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
            
         }
@@ -146,7 +162,7 @@ namespace DirectoryIterator
                     if (System.IO.Path.GetFileName(item) == Searchvalue.Text)
                     {
                         MessageBox.Show($"File exist inside {item}");
-                        
+
                         if (Deletechoice.Checked)
                         {
                             DialogResult result = MessageBox.Show($"Do you want to detele {item}", "Confirmation", MessageBoxButtons.YesNoCancel);
@@ -177,10 +193,11 @@ namespace DirectoryIterator
                     
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
            
         }
@@ -193,24 +210,25 @@ namespace DirectoryIterator
 
                     AddDir(Directory.GetDirectories(Path.Text));
                     AddFiles(Directory.GetFiles(Path.Text));
-                   
+
                     Recursive(Directories);
-                   
-                    ShowAllFiles();
-                    InserttoGrid(ChoiceExtension);
-                
+
+                    //ShowAllFiles();
+                    //InserttoGrid(ChoiceExtension);
+                    //this.Dispose();
                     MessageBox.Show("Done");
-        
-                    timer1.Stop();
-                    timer1.Enabled = false;
+                 
+                    //timer1.Stop();
+                    //timer1.Enabled = false;
                
                         
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
-                MessageBox.Show(e.ToString());
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                MessageBox.Show(ex.ToString());
 
             }
 
@@ -225,6 +243,7 @@ namespace DirectoryIterator
                 {
                     StringArgReturningVoidDelegate d = new StringArgReturningVoidDelegate(GetExtensionvalue);
                     Extensionvalue.Invoke(new MethodInvoker(delegate { text = Extensionvalue.Text; }));
+                    
                     return text;
 
                 }
@@ -233,9 +252,12 @@ namespace DirectoryIterator
                     return text;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show(e.ToString());
+             
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                MessageBox.Show(ex.ToString());
 
                 return this.Extensionvalue.Text;
 
@@ -310,9 +332,10 @@ namespace DirectoryIterator
                 ctrl.Enabled = Enable;
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+       
+
+        private void Start(object sender, EventArgs e)
         {
-           
             MessageBox.Show("Start");
             requirefilename = Searchvalue.Text;
             requirefileextension = Extensionvalue.Text;
@@ -321,10 +344,6 @@ namespace DirectoryIterator
             Startthread = new Thread(new ThreadStart(Start));
             Startthread.IsBackground = true;
             Startthread.Start();
-
-
         }
-
-       
     }
 }
