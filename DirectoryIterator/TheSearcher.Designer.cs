@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TheSearcher));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.Path = new System.Windows.Forms.TextBox();
@@ -138,7 +139,6 @@
             this.ExtensionList.RowHeadersWidth = 10;
             this.ExtensionList.Size = new System.Drawing.Size(385, 170);
             this.ExtensionList.TabIndex = 6;
-            this.ExtensionList.Visible = false;
             // 
             // Timer
             // 
@@ -167,9 +167,9 @@
             this.panel1.Controls.Add(this.Path);
             this.panel1.Controls.Add(this.Searchvalue);
             this.panel1.Controls.Add(this.Extensionvalue);
-            this.panel1.Location = new System.Drawing.Point(225, 56);
+            this.panel1.Location = new System.Drawing.Point(12, 56);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(304, 292);
+            this.panel1.Size = new System.Drawing.Size(739, 292);
             this.panel1.TabIndex = 12;
             // 
             // label4
@@ -180,7 +180,6 @@
             this.label4.Size = new System.Drawing.Size(114, 13);
             this.label4.TabIndex = 11;
             this.label4.Text = "All Matching Extension";
-            this.label4.Visible = false;
             // 
             // TheSearcher
             // 
@@ -189,6 +188,7 @@
             this.ClientSize = new System.Drawing.Size(798, 373);
             this.Controls.Add(this.Timer);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TheSearcher";
             this.Text = "The Searcher";
             ((System.ComponentModel.ISupportInitialize)(this.ExtensionList)).EndInit();

@@ -159,26 +159,26 @@ namespace DirectoryIterator
                // MessageBox.Show($"Total files were {File.Count} and Total Directories were  {TotalDirectories}");
                 foreach (var item in File)
                 {
-                    if (System.IO.Path.GetFileName(item) == Searchvalue.Text)
-                    {
-                        MessageBox.Show($"File exist inside {item}");
+                    //if (System.IO.Path.GetFileName(item) == Searchvalue.Text)
+                    //{
+                    //    //MessageBox.Show($"File exist inside {item}");
 
-                        if (Deletechoice.Checked)
-                        {
-                            DialogResult result = MessageBox.Show($"Do you want to detele {item}", "Confirmation", MessageBoxButtons.YesNoCancel);
-                            if (result == DialogResult.Yes)
-                            {
-                               System.IO.File.Delete(item);
+                    //    if (Deletechoice.Checked)
+                    //    {
+                    //        DialogResult result = MessageBox.Show($"Do you want to detele {item}", "Confirmation", MessageBoxButtons.YesNoCancel);
+                    //        if (result == DialogResult.Yes)
+                    //        {
+                    //           System.IO.File.Delete(item);
 
-                                MessageBox.Show($"{item} Deleted");
-
-                            }
+                    //            MessageBox.Show($"{item} Deleted");
+                             
+                    //        }
                            
                            
 
-                        }
-                        return;
-                    }
+                    //    }
+                    //    return;
+                    //}
                     if (Extensionvalue.Text!= "")
                     {
                         string ext = "."+GetExtensionvalue();
@@ -213,8 +213,8 @@ namespace DirectoryIterator
 
                     Recursive(Directories);
 
-                    //ShowAllFiles();
-                    //InserttoGrid(ChoiceExtension);
+                    ShowAllFiles();
+                    InserttoGrid(ChoiceExtension);
                     //this.Dispose();
                     MessageBox.Show("Done");
                  
