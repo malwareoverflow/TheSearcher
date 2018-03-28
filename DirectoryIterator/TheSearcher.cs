@@ -81,8 +81,8 @@ namespace DirectoryIterator
                     string extension = System.IO.Path.GetExtension(item);
                     if ($"{filename}{extension}"==$"{requirefilename}.{requirefileextension}")
                     {
-                        MessageBox.Show($"File found inside {item.ToString()}");
-                      
+                        //MessageBox.Show($"File found inside {item.ToString()}");
+                        ShowBallon($"File found inside {item.ToString()}");
                         return true;
                     }
                     File.Add(item);
@@ -216,7 +216,8 @@ namespace DirectoryIterator
                     ShowAllFiles();
                     InserttoGrid(ChoiceExtension);
                     //this.Dispose();
-                    MessageBox.Show("Done");
+                    //MessageBox.Show("Done");
+                    ShowBallon("Completed");
                  
                     //timer1.Stop();
                     //timer1.Enabled = false;
@@ -333,10 +334,35 @@ namespace DirectoryIterator
             }
         }
        
+        public void ShowBallon(string Message)
+        {
+
+            var notification = new System.Windows.Forms.NotifyIcon()
+            {
+                Visible = true,
+                Icon = System.Drawing.SystemIcons.Information,
+                // optional - BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info,
+                // optional - BalloonTipTitle = "My Title",
+                BalloonTipText = Message,
+            };
+
+            // Display for 5 seconds.
+            notification.ShowBalloonTip(10000);
+           
+            // This will let the balloon close after it's 5 second timeout
+            // for demonstration purposes. Comment this out to see what happens
+            // when dispose is called while a balloon is still visible.
+            Thread.Sleep(10000);
+
+            // The notification should be disposed when you don't need it anymore,
+            // but doing so will immediately close the balloon if it's visible.
+            notification.Dispose();
+        }
 
         private void Start(object sender, EventArgs e)
         {
-            MessageBox.Show("Start");
+            this.WindowState = FormWindowState.Minimized; 
+            ShowBallon("File search started you will be notify when completed");
             requirefilename = Searchvalue.Text;
             requirefileextension = Extensionvalue.Text;
             timer1.Enabled = true;
