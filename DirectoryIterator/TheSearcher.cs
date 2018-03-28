@@ -371,11 +371,32 @@ namespace DirectoryIterator
             Startthread.IsBackground = true;
             Startthread.Start();
         }
+        public void Showconfirmation(string Message,string Head,string Path)
+        {
 
+            var confirmResult = MessageBox.Show(Message,
+                                     Head,
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start(ExtensionList.SelectedCells[0].Value.ToString());
+            }
+            else
+            {
+                // If 'No', do something here.
+            }
+        }
+            
         private void ExtensionList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-        
-          
+       int SelectedPathindex=     ExtensionList.CurrentCell.RowIndex;
+
+            Showconfirmation($"Do you want to open {ExtensionList.SelectedCells[0].Value.ToString()}?", "Confirmation", ExtensionList.SelectedCells[0].Value.ToString());
+      
+
+
+
+
         }
     }
 }
